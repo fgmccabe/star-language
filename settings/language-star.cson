@@ -1,0 +1,5 @@
+'.source.star':
+  'editor':
+    'commentStart': '--( |\t)'
+    'increaseIndentPattern': '(:-|-->|=>)\\s*(-- .*)?$'
+    

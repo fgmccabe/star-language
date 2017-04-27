@@ -1,0 +1,12 @@
+{
+  "name": "star-language",
+  "version": "0.0.0",
+  "description": "Star language support for Atom",
+  "keywords": [],
+  "repository": "https://github.com/fmccabe/star-language.git",
+  "license": "Apache 2.0",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {}
+}

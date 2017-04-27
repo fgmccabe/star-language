@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle star-language",
+        "command": "star-language:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "star-language",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "star-language:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+'scopeName': 'source.star'
+'fileTypes': [
+  'star'
+]
+'firstLineMatch': '(\\w+)(\\.\w+)*\{'
+'name': 'Star'
+
+'patterns': [
+  {
+    'begin': '/\\*'
+    'end': '\\*/'
+    'name': 'comment.block.star'
+  }
+  {
+    'match':'--[ \\t].*$'
+    'name':'comment.line.double-dash.star'
+  }
+  {
+    'name': 'string.quoted.double.star'
+    'begin': '"'
+    'beginCaptures':
+  	  '0':
+    		'name': 'punctuation.definition.string.begin.star'
+  	'end': '"'
+  	'endCaptures':
+  	  '0':
+    		'name': 'punctuation.definition.string.end.star'
+    'patterns': [
+      {
+        'include':'#quoted'
+      }
+    ]
+  }
+  {
+    'begin': "'"
+    'end': "'"
+    'contentName': 'string.quoted.single.star'
+    'patterns': [
+        'include' : '#escaped-char'
+    ]
+  }
+  {
+    'begin': '\`'
+    'end': '\`'
+    'contentName': 'regexp.star'
+    'patterns': [
+        'include' : '#escaped-char'
+    ]
+  }
+  {
+    'match':"(~~|::=|\\||\\?|<=>|<=|=>|:--|:-|-->|->>|->|,|,\\.\\.|<~|::|=|\\\\=|\\\\\\+|\\.\\.|\\%\\%|\\^|\\~|\\.|#|@|:|!|\\[\\||\\|\\]|\\[|\\])"
+    'name':'keyword.control.star'
+  }
+  {
+    'name':'keyword.operator.star'
+    'match':'\\b(private|public|import|all|exists|type|contract|implementation)\\b'
+  }
+  {
+    'name':'constant.language.star'
+    'match':'\\b(true|false)\\b'
+  }
+  {
+    'match':"(\\*>|\\|\\||==|\\\\==|<|=<|>=|>|\\.=|=\\.|\\bin\\b|<>|\\+|\\b-\\b|\\*|/|%|\\*\\*)"
+    'name':'support.operator.star'
+  }
+  {
+    'match': "((0c(\\\\u[0-9a-fA-F]+;|\\\\.|.))|(0x[0-9a-zA-F]+)|(\\d+(\\.\\d+([eE][-+]?\\d+)?)?))"
+    'name': 'constant.numeric.star'
+  }
+  {
+    'match': '\\b[a-zA-Z_][a-zA-Z0-9_]*\\b'
+    'name': 'variable.language.star'
+  }
+]
+'repository' :
+  'quoted':
+    'patterns':[
+      {
+        'name' : 'embedded.line.star'
+        'contentName':'source.star'
+        'begin':'\\\\\\('
+        'end':'\\)'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.section.embedded.begin.star'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.section.embedded.end.star'
+        'patterns' : [
+          { 'include':'$self' }
+        ]
+      }
+      {
+        'include' : '#escaped-char'
+      }
+    ]
+  'escaped-char' :
+    'patterns':[
+      {
+        'name':'constant.character.escape.star'
+        'match':'\\\\[\\\\tnr"\']'
+      }
+      {
+        'match':'\\\\u[0-9a-zA-F]+;'
+        'name':'constant.character.escape.star'
+      }
+    ]
